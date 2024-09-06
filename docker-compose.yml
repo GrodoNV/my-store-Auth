@@ -2,10 +2,11 @@ version: '3.3'
 
 services:
   postgres:
+    container_name: db-auth
     image: postgres:13
     environment:
-      - POSTGRES_DB=my_store
-      - POSTGRES_USER=nico
+      - POSTGRES_DB=my-store
+      - POSTGRES_USER=grodo
       - POSTGRES_PASSWORD=admin123
     ports:
       - 5432:5432
@@ -39,5 +40,3 @@ services:
       - PMA_HOST=mysql
     ports:
       - 8080:80
-
-

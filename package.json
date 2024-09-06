@@ -25,15 +25,18 @@
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
     "@hapi/boom": "^9.1.4",
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "joi": "^17.4.2",
-    "mysql2": "^2.3.0",
+    "mysql2": "^3.11.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.6.5",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.6.2"
   },
   "engines": {
     "node": "14.x"
