@@ -13,3 +13,5 @@ function signToken(payload ,secret){
 
 const token = signToken(payload, secret);
 console.log(token);
+
+//recordatorio mega importante !!!! = el secret solo debe saberlo el backend , no deberia estar en el codigo como aqui ...
