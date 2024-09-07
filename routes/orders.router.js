@@ -29,7 +29,6 @@ router.get(
 
 router.post(
   '/',
-  passport.authenticate('jwt', { session: false }),  // Autenticación JWT añadida
   validatorHandler(createOrderSchema, 'body'),
   async (req, res, next) => {
     try {

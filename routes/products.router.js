@@ -9,7 +9,6 @@ const router = express.Router();
 const service = new ProductsService();
 
 router.get('/',
-  passport.authenticate('jwt', { session: false }),  // Autenticación JWT
   validatorHandler(queryProductSchema, 'query'),
   async (req, res, next) => {
     try {
@@ -22,7 +21,6 @@ router.get('/',
 );
 
 router.get('/:id',
-  passport.authenticate('jwt', { session: false }),  // Autenticación JWT
   validatorHandler(getProductSchema, 'params'),
   async (req, res, next) => {
     try {
