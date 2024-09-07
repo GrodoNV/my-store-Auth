@@ -8,16 +8,20 @@ const { createCategorySchema, updateCategorySchema, getCategorySchema } = requir
 const router = express.Router();
 const service = new CategoryService();
 
-router.get('/', async (req, res, next) => {
-  try {
-    const categories = await service.find();
-    res.json(categories);
-  } catch (error) {
-    next(error);
+router.get('/',
+  passport.authenticate('jwt', { session: false }),  // Autenticación JWT
+  async (req, res, next) => {
+    try {
+      const categories = await service.find();
+      res.json(categories);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 router.get('/:id',
+  passport.authenticate('jwt', { session: false }),  // Autenticación JWT
   validatorHandler(getCategorySchema, 'params'),
   async (req, res, next) => {
     try {
@@ -31,7 +35,7 @@ router.get('/:id',
 );
 
 router.post('/',
-  passport.authenticate('jwt', {session: false}),    //para hacer un manejo de session (ponerlo en true) necesitamos hacer uso de cookies
+  passport.authenticate('jwt', { session: false }),
   validatorHandler(createCategorySchema, 'body'),
   async (req, res, next) => {
     try {
@@ -45,6 +49,7 @@ router.post('/',
 );
 
 router.patch('/:id',
+  passport.authenticate('jwt', { session: false }),  // Autenticación JWT
   validatorHandler(getCategorySchema, 'params'),
   validatorHandler(updateCategorySchema, 'body'),
   async (req, res, next) => {
@@ -60,12 +65,13 @@ router.patch('/:id',
 );
 
 router.delete('/:id',
+  passport.authenticate('jwt', { session: false }),  // Autenticación JWT
   validatorHandler(getCategorySchema, 'params'),
   async (req, res, next) => {
     try {
       const { id } = req.params;
       await service.delete(id);
-      res.status(201).json({id});
+      res.status(201).json({ id });
     } catch (error) {
       next(error);
     }
